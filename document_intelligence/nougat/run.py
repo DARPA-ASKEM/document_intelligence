@@ -84,6 +84,7 @@ class ImageQueue:
         self.index = 0
 
     def next_batch(self) -> Tuple[List[Image.Image], int]:
+        logger.info(f"Processing batch {self.index} to {self.index + self.batch_size}")
         if self.index >= len(self.images):
             return None, self.index
 

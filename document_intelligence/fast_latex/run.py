@@ -101,6 +101,10 @@ async def process_and_predict(file: UploadFile = File(...), isolated_only: bool 
 
     return JSONResponse(content=latex_results)
 
+@app.get("/health")
+async def health_check():
+    return JSONResponse(content={"status": "OK"}, status_code=200)
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8002)

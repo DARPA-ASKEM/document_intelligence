@@ -1,0 +1,8 @@
+uvicorn
+pillow
+numpy
+opencv-python-headless
+onnxruntime
+paddleocr
+fastapi
+git+https://github.com/j2whiting/texteller.git

@@ -11,7 +11,7 @@ app = FastAPI()
 model = MixedInferenceModel()
 
 class ImageData(BaseModel):
-    images: Dict[int, List[str]]  # {page_num: [base64_images]}
+    images: Dict[int, List[str]]
 
 @app.post("/predict_latex")
 async def predict_latex(data: ImageData):

@@ -6,4 +6,5 @@ onnxruntime
 paddleocr
 fastapi
 pdf2image
+cnstd
 git+https://github.com/j2whiting/texteller.git

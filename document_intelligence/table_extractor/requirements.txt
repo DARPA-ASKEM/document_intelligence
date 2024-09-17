@@ -1,0 +1,6 @@
+fastapi
+pdf2image
+openai
+Pillow
+ultralyticsplu
+numpy==1.23.5

@@ -30,7 +30,7 @@ This service provides a FastAPI-based API for detecting tables in PDF documents.
 
 4. **Run the service**:
    ```bash
-   uvicorn main:app --reload --port 8002
+   uvicorn run:app --reload --port 8002
    ```
 
 The service will be available at `http://127.0.0.1:8002`.

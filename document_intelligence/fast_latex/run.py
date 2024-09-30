@@ -36,7 +36,7 @@ class ImageAnalyzer:
         return all_detections
 
     def analyze_image(self, image):
-        return self.analyzer.analyze(image, resized_shape=1024)
+        return self.analyzer.analyze(image, resized_shape=2048)
 
     def get_cropped_images(self, images, all_detections, isolated_only=True, padding: int = None):
         cropped_images_dict = {}
@@ -73,7 +73,7 @@ class ImageAnalyzer:
 
 
 @app.post("/predict")
-async def process_and_predict(file: UploadFile = File(...), isolated_only: bool = True, padding: int = 10):
+async def process_and_predict(file: UploadFile = File(...), isolated_only: bool = True, padding: int = 100):
     pdf_bytes = await file.read()
     pdf_extractor = PDFImageExtractor(pdf_bytes)
     images = pdf_extractor.get_images()

@@ -64,7 +64,7 @@ Before running the project, ensure you have the following dependencies installed
     You can run the FastAPI server using `uvicorn`:
 
     ```bash
-    uvicorn main:app --reload --host 0.0.0.0 --port 8000
+    uvicorn run:app --reload --host 0.0.0.0 --port 8000
     ```
 
     This will start the server at `http://0.0.0.0:8000`.

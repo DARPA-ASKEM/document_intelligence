@@ -13,9 +13,16 @@ from ultralyticsplus import YOLO
 app = FastAPI()
 model = YOLO('foduucom/table-detection-and-extraction')
 
-TABLE_EXTRACTION_PROMPT = """Please extract the tables from the images and provide the data in a tabular format. Some images may not contain tables, and may contain a mix of figures, graphs and equations. Please ignore these images and give them a score of 0. You will structure your response as a JSON object with the following schema:
+TABLE_EXTRACTION_PROMPT = """Please extract tables from the images and provide the table data formatted as an XHTML Table.
 
-'table_text': The text extracted from the table, use visual cues to separate the columns and rows. Ensure that greek characters are preserved, do not swap "α" to "a" for example.
+Some images may not contain tables and may only contain a mix of text, figures, graphs and equations. Please ignore these images and give them a score of 0.
+Some images may contain a single table, while others may contain multiple tables. Please extract all tables present in the image.
+
+Tables may not not be well-defined or are not easily extractable. Please do your best to use html tags and column and row spans to format the extracted table to align with the structure of the table in the image. Use visual cues to separate the columns and rows and to determine cells that span multiple columns. Ensure that symbols, subscripts, superscripts, and greek characters are preserved, do not swap "α" to "a" for example.
+
+You will structure your response as a JSON object with the following schema:
+
+'table_text': an array of XHTML formatted tables.
 'score': A score from 0 to 10 indicating the quality of the extracted table. 0 indicates that the image does not contain a table, 10 indicates a high-quality extraction.
 
 Begin:
@@ -34,7 +41,7 @@ def process_and_send_images(output_dict, prompt):
             img_type = "image/png"
 
             response = client.chat.completions.create(
-                model="gpt-4o-mini",
+                model="gpt-4o-2024-08-06",
                 messages=[
                     {
                         "role": "user",

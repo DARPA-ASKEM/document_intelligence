@@ -65,6 +65,9 @@ class ImageAnalyzer:
                 cropped_image = image_array[y_min:y_max, x_min:x_max]
                 cropped_image_pil = Image.fromarray(cropped_image)
 
+								print("")
+								print(f"AABB {x_min} {y_min} {x_max} {y_max} ")
+
                 cropped_images.append(cropped_image_pil)
 
             cropped_images_dict[page_number] = cropped_images
